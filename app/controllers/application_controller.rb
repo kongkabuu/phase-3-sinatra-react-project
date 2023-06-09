@@ -5,5 +5,8 @@ class ApplicationController < Sinatra::Base
   get "/" do
     { message: "Good luck with your project!" }.to_json
   end
-
+  get "/articles" do
+    article = Article.all
+    article.to_json(include: :comments)
+  end
 end
